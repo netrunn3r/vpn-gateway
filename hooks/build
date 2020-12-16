@@ -1,3 +1,4 @@
 #!/bin/bash
 
-docker build --platform linux/amd64,linux/arm64 -f $DOCKERFILE_PATH -t $IMAGE_NAME .
+export DOCKER_CLI_EXPERIMENTAL=enabled
+docker buildx build --platform linux/amd64,linux/arm64 -f $DOCKERFILE_PATH -t $IMAGE_NAME .
