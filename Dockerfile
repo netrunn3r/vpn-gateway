@@ -13,5 +13,4 @@ ENV USER=user
 ENV PASS=pass
 ENV INTERVAL=3
 
-
 ENTRYPOINT [ "/entrypoint.sh" ]
