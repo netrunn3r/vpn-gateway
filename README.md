@@ -9,10 +9,12 @@ Current version only support FortiGate SSL VPN (it use openfortivpn package), in
 **As it use macvlan, it can be used only in linux!**
 
 ## Deploy container
+On host where containers will be run, there must be ppp kernel module installed, because it is needed for container (which use host kernel and its modules). On Debian it can be installed very simply: `apt install ppp`, kernel module is loaded automatically. As container need the kernel module, it has to be run with `--privileged` parameter.
+
 To pass VPN parameters, you have to set environment variables like this:
 ```console
 $ docker network create -d macvlan --subnet=<host network> --gateway=<host gateway ip> -o parent=<host interface> net_pub
-$ docker run --network=net_pub --ip=<free ip from host network> --name vpn-gateway-org1 -e HOST=vpn_server -e USER=username -e PASS=password netrunn3r/vpn-gateway
+$ docker run --privileged --network=net_pub --ip=<free ip from host network> --name vpn-gateway-org1 -e HOST=vpn_server -e USER=username -e PASS=password netrunn3r/vpn-gateway
 ```
 Where parameters to create network are:
 1. `host network` - network of host, where docker container is running (it can be local machine or different machine), eg. 10.0.0.0/24
