@@ -21,9 +21,10 @@ Where parameters to create network are:
 2. `host gateway ip` - gateway of previously defined network, eg. 10.0.0.1
 3. `host interface` - interface name on which is previously defined network, eg eth0
 
-There are also two container variables with default value:
+There are also three container variables with default value:
 1. `PORT=443` - tcp port on which vpn server listen
 2. `INTERVAL=3` - after how many seconds reconnect if disconnected
+3. `REALM=/` - realm which will be used to connect
 
 ## Configure local network
 To route traffic to remote network, there need to be added static routes, eg. in Windows:

@@ -12,5 +12,6 @@ ENV PORT=443
 ENV USER=user
 ENV PASS=pass
 ENV INTERVAL=3
+ENV REALM=/
 
 ENTRYPOINT [ "/entrypoint.sh" ]
